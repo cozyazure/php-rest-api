@@ -13,7 +13,11 @@ if($str == []){
     ThrowError(500,"Please make sure the data has a valid input field in JSON format");
 }
 
-//truncate and count the wrords
+if (!is_string($str)) {
+    ThrowError(500, "Please input a valid string");
+}
+
+//tokenize and count the wrords
 $words = array_count_values(str_word_count($str, 1));
 //sort the words according to count;
 arsort($words);
